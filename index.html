@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Daksh Chaudhary | Finance and Computer Science Projects</title>
+  <meta name="description" content="Two projects by Daksh Chaudhary: an options pricer built from first principles and a Titan Company equity valuation.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="wrap hero">
+    <h1>Daksh Chaudhary</h1>
+    <p class="lead">B.Sc. (Hons.) Computer Science student at Keshav Mahavidyalaya, University of Delhi. I build finance models in Python and test them against theory and real market data.</p>
+    <p class="links">
+      <a href="https://github.com/Dakshcore">GitHub</a>
+      <a href="https://www.linkedin.com/in/dakshchaudhary-finance">LinkedIn</a>
+    </p>
+  </header>
+
+  <main class="wrap">
+    <section class="card" id="titan" aria-labelledby="titan-h">
+      <h2 id="titan-h">Titan Company: Equity Valuation and Risk Analysis</h2>
+      <p>A discounted-earnings valuation of Titan Company (NSE: TITAN), built in Excel and rebuilt in Python. It adds a Monte Carlo simulation, a sensitivity (tornado) chart and a reverse valuation of the growth the share price implies.</p>
+
+      <div class="stats">
+        <div class="stat"><span class="num">&#8377;4,052</span><span class="lbl">Base-case value per share</span></div>
+        <div class="stat"><span class="num">&#8377;4,884</span><span class="lbl">NSE close, 25 Sep 2026</span></div>
+        <div class="stat"><span class="num">12.6%</span><span class="lbl">Revenue CAGR, FY2026&ndash;FY2042</span></div>
+        <div class="stat"><span class="num">&#8377;4,036</span><span class="lbl">Monte Carlo median, 10,000 runs</span></div>
+      </div>
+
+      <ul>
+        <li>16-year forecast, FY27 to FY42, with a 10.3% discount rate (10.26% cost of equity) and a 26.5x exit P/E.</li>
+        <li>The base case is 17% below the market price. The 10,000-scenario Monte Carlo has a 90% range of &#8377;2,628 to &#8377;6,348, and 24% of runs land above the price.</li>
+        <li>Limitations are stated in the README: it discounts net income rather than free cash flow, and 62.7% of the value is terminal value.</li>
+      </ul>
+
+      <div class="figs">
+        <figure>
+          <img src="images/titan_tornado.png" alt="Tornado chart showing which assumptions move Titan's value per share the most" loading="lazy">
+          <figcaption>What moves Titan's value (sensitivity / tornado chart)</figcaption>
+        </figure>
+        <figure>
+          <img src="images/titan_monte_carlo.png" alt="Histogram of 10,000 Monte Carlo scenarios for Titan's value per share" loading="lazy">
+          <figcaption>10,000 Monte Carlo scenarios</figcaption>
+        </figure>
+      </div>
+
+      <p><a class="btn" href="https://github.com/Dakshcore/titan-valuation">View on GitHub</a></p>
+      <p class="note">Student research for education only; not investment advice.</p>
+    </section>
+
+    <section class="card" id="options" aria-labelledby="options-h">
+      <h2 id="options-h">Options Pricer</h2>
+      <p>Option pricing in Python, built from first principles and tested against theory, then applied to real NIFTY option prices from NSE.</p>
+
+      <div class="stats">
+        <div class="stat"><span class="num">36</span><span class="lbl">Unit tests, incl. Hull's worked examples</span></div>
+        <div class="stat"><span class="num">101</span><span class="lbl">NIFTY options solved for implied volatility</span></div>
+        <div class="stat"><span class="num">11.2%</span><span class="lbl">Implied vol at the forward</span></div>
+        <div class="stat"><span class="num">19.2%</span><span class="lbl">Implied vol, strikes 10% below</span></div>
+      </div>
+
+      <ul>
+        <li>Black-Scholes-Merton with the Greeks, a binomial tree for American options, and Monte Carlo simulation with variance reduction (antithetic variates).</li>
+        <li>An implied volatility solver using Brent's method, applied to NSE closing prices on 25 Sep 2026.</li>
+        <li>The smile shows the market paying up for protection against a fall: 11.2% at the forward, 19.2% for strikes 10% below it.</li>
+      </ul>
+
+      <figure>
+        <img src="images/nifty_smile.png" alt="NIFTY implied volatility smile from NSE closing prices on 25 September 2026" loading="lazy">
+        <figcaption>NIFTY implied volatility smile, NSE close on 25 Sep 2026</figcaption>
+      </figure>
+
+      <p><a class="btn" href="https://github.com/Dakshcore/options-pricer">View on GitHub</a></p>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    <p>Hosted on GitHub Pages</p>
+  </footer>
+</body>
+</html>
