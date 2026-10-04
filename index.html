@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Daksh Chaudhary | Finance and Computer Science Projects</title>
-  <meta name="description" content="Finance projects by Daksh Chaudhary: a Titan Company equity valuation, trading comps against listed Indian jewellers, and an options pricer built from first principles.">
+  <meta name="description" content="Finance projects by Daksh Chaudhary: a Titan Company free cash flow DCF and earnings valuation, trading comps against listed Indian jewellers, and an options pricer built from first principles.">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -20,29 +20,30 @@
   <main class="wrap">
     <section class="card" id="titan" aria-labelledby="titan-h">
       <h2 id="titan-h">Titan Company: Equity Valuation and Risk Analysis</h2>
-      <p>A discounted-earnings valuation of Titan Company (NSE: TITAN), built in Excel and rebuilt in Python. It adds a Monte Carlo simulation, a sensitivity (tornado) chart and a reverse valuation of the growth the share price implies.</p>
+      <p>Two valuations of Titan Company (NSE: TITAN), each built in Excel and in Python on the same revenue forecast: a free cash flow (FCFF) DCF, and a discounted-earnings model with a Monte Carlo simulation, a tornado chart and a reverse valuation of the growth the price implies.</p>
 
       <div class="stats">
-        <div class="stat"><span class="num">&#8377;4,052</span><span class="lbl">Base-case value per share</span></div>
-        <div class="stat"><span class="num">&#8377;4,884</span><span class="lbl">NSE close, 25 Sep 2026</span></div>
-        <div class="stat"><span class="num">12.6%</span><span class="lbl">Revenue CAGR, FY2026&ndash;FY2042</span></div>
-        <div class="stat"><span class="num">&#8377;4,036</span><span class="lbl">Monte Carlo median, 10,000 runs</span></div>
+        <div class="stat"><span class="num">&#8377;2,131</span><span class="lbl">FCFF DCF value per share</span></div>
+        <div class="stat"><span class="num">&#8377;4,058</span><span class="lbl">Discounted-earnings value</span></div>
+        <div class="stat"><span class="num" style="white-space:nowrap">&#8377;4,515.70</span><span class="lbl">NSE close, 1 Oct 2026</span></div>
+        <div class="stat"><span class="num">14.6%</span><span class="lbl">EBIT margin the price implies (avg 9.5%)</span></div>
       </div>
 
       <ul>
-        <li>16-year forecast, FY27 to FY42, with a 10.3% discount rate (10.26% cost of equity) and a 26.5x exit P/E.</li>
-        <li>The base case is 17% below the market price. The 10,000-scenario Monte Carlo has a 90% range of &#8377;2,628 to &#8377;6,348, and 24% of runs land above the price.</li>
-        <li>Limitations are stated in the README: it discounts net income rather than free cash flow, and 62.7% of the value is terminal value.</li>
+        <li>FCFF DCF: 10.08% WACC, 6% terminal growth, margins and reinvestment from Titan's FY2022&ndash;FY2026 history. Only 46% of after-tax operating profit becomes free cash flow over FY27&ndash;FY42, because growth ties up gold inventory and new stores.</li>
+        <li>Gold on loan is treated as operating funding in the base case, with an assumed 2% cost. Treating it as debt instead gives &#8377;1,639.</li>
+        <li>Earnings model: 10.26% cost of equity and a 26.5x exit P/E. The 10,000-run Monte Carlo has a 90% range of &#8377;2,631 to &#8377;6,358, and 34% of runs land above the price.</li>
+        <li>The Excel sheets reproduce the Python values exactly, and 10 unit tests run on every push.</li>
       </ul>
 
       <div class="figs">
         <figure>
-          <img src="images/titan_tornado.png" alt="Tornado chart showing which assumptions move Titan's value per share the most" loading="lazy">
-          <figcaption>What moves Titan's value (sensitivity / tornado chart)</figcaption>
+          <img src="images/titan_fcff.png" alt="Bar chart of Titan's forecast after-tax operating profit against free cash flow, FY2027 to FY2042" loading="lazy">
+          <figcaption>After-tax operating profit vs free cash flow, FY27&ndash;FY42</figcaption>
         </figure>
         <figure>
-          <img src="images/titan_monte_carlo.png" alt="Histogram of 10,000 Monte Carlo scenarios for Titan's value per share" loading="lazy">
-          <figcaption>10,000 Monte Carlo scenarios</figcaption>
+          <img src="images/titan_monte_carlo.png" alt="Histogram of 10,000 Monte Carlo scenarios for Titan's value per share from the discounted-earnings model" loading="lazy">
+          <figcaption>10,000 Monte Carlo scenarios, discounted-earnings model</figcaption>
         </figure>
       </div>
 
@@ -58,18 +59,18 @@
         <div class="stat"><span class="num">51.4x</span><span class="lbl">Titan EV/EBITDA, FY2026</span></div>
         <div class="stat"><span class="num">19.6x</span><span class="lbl">Core-peer median EV/EBITDA</span></div>
         <div class="stat"><span class="num" style="white-space:nowrap">&#8377;964&ndash;1,752</span><span class="lbl">Titan implied by peer medians</span></div>
-        <div class="stat"><span class="num">53</span><span class="lbl">Unit tests, run on every push</span></div>
+        <div class="stat"><span class="num">55</span><span class="lbl">Unit tests, run on every push</span></div>
       </div>
 
       <ul>
         <li>Computes EV/EBITDA, P/E and EV/Sales on the latest fiscal year or the last twelve months, plus margins, ROCE, ROE and inventory days.</li>
-        <li>Titan trades at about 2.6x the peer medians. All three peer-multiple methods imply values well below the &#8377;4,515.7 price on 1 Oct 2026, so the market pays a premium the jewellers' multiples do not explain.</li>
+        <li>Titan trades at about 2.6x the peer medians. All three peer-multiple methods imply values well below the &#8377;4,515.7 price on 1 Oct 2026, so the market pays a premium the jewellers' multiples do not explain. My FCFF DCF (&#8377;2,131) lands just above the peer ranges.</li>
         <li>Titan's ROCE (16.3%) sits inside the peer range; what stands out is its size and its 4.9x EV/Sales, closer to Trent than to the jewellers.</li>
       </ul>
 
       <figure>
-        <img src="images/football_field.png" alt="Football-field chart of Titan's implied value per share from peer EV/EBITDA, P/E and EV/Sales multiples, against my valuation and the share price" loading="lazy">
-        <figcaption>Football field: Titan's implied value from peer multiples, my valuation and the share price</figcaption>
+        <img src="images/football_field.png" alt="Football-field chart of Titan's implied value per share from peer EV/EBITDA, P/E and EV/Sales multiples, against my two valuations and the share price" loading="lazy">
+        <figcaption>Football field: Titan's implied value from peer multiples, my two valuations and the share price</figcaption>
       </figure>
 
       <p><a class="btn" href="https://github.com/Dakshcore/jewellery-peer-comps">View on GitHub</a></p>
