@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Daksh Chaudhary | Finance and Computer Science Projects</title>
-  <meta name="description" content="Two projects by Daksh Chaudhary: an options pricer built from first principles and a Titan Company equity valuation.">
+  <meta name="description" content="Finance projects by Daksh Chaudhary: a Titan Company equity valuation, trading comps against listed Indian jewellers, and an options pricer built from first principles.">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -50,6 +50,32 @@
       <p class="note">Student research for education only; not investment advice.</p>
     </section>
 
+    <section class="card" id="comps" aria-labelledby="comps-h">
+      <h2 id="comps-h">Jewellery Peer Comps: Titan vs Listed Jewellers</h2>
+      <p>Trading comparables that cross-check the Titan valuation above against what the market pays for listed Indian jewellers: Kalyan, Senco, Thangamayil and P N Gadgil, with Trent shown separately for reference. Financials come from Screener.in exports and prices from NSE's bhavcopy.</p>
+
+      <div class="stats">
+        <div class="stat"><span class="num">51.4x</span><span class="lbl">Titan EV/EBITDA, FY2026</span></div>
+        <div class="stat"><span class="num">19.6x</span><span class="lbl">Core-peer median EV/EBITDA</span></div>
+        <div class="stat"><span class="num">&#8377;964&ndash;&#8377;1,752</span><span class="lbl">Titan implied by peer medians</span></div>
+        <div class="stat"><span class="num">53</span><span class="lbl">Unit tests, run on every push</span></div>
+      </div>
+
+      <ul>
+        <li>Computes EV/EBITDA, P/E and EV/Sales on the latest fiscal year or the last twelve months, plus margins, ROCE, ROE and inventory days.</li>
+        <li>Titan trades at about 2.6x the peer medians. All three peer-multiple methods imply values well below the &#8377;4,515.7 price on 1 Oct 2026, so the market pays a premium the jewellers' multiples do not explain.</li>
+        <li>Titan's ROCE (16.3%) sits inside the peer range; what stands out is its size and its 4.9x EV/Sales, closer to Trent than to the jewellers.</li>
+      </ul>
+
+      <figure>
+        <img src="images/football_field.png" alt="Football-field chart of Titan's implied value per share from peer EV/EBITDA, P/E and EV/Sales multiples, against my valuation and the share price" loading="lazy">
+        <figcaption>Football field: Titan's implied value from peer multiples, my valuation and the share price</figcaption>
+      </figure>
+
+      <p><a class="btn" href="https://github.com/Dakshcore/jewellery-peer-comps">View on GitHub</a></p>
+      <p class="note">Trailing multiples only, net debt unadjusted, four core peers. Student research for education only; not investment advice.</p>
+    </section>
+
     <section class="card" id="options" aria-labelledby="options-h">
       <h2 id="options-h">Options Pricer</h2>
       <p>Option pricing in Python, built from first principles and tested against theory, then applied to real NIFTY option prices from NSE.</p>
@@ -73,6 +99,10 @@
       </figure>
 
       <p><a class="btn" href="https://github.com/Dakshcore/options-pricer">View on GitHub</a></p>
+    </section>
+    <section class="card" id="other" aria-labelledby="other-h">
+      <h2 id="other-h">Other Work</h2>
+      <p><strong><a href="https://github.com/Dakshcore/campaign-clipper">campaign-clipper</a></strong>: a Python pipeline (yt-dlp, faster-whisper, ffmpeg) that turns long-form footage into vertical shorts and checks each clip against a paid campaign's rules (brand spelling in the captions, length, loudness, banned words, upload size) before anything is submitted.</p>
     </section>
   </main>
 
