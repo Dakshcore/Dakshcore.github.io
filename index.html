@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Daksh Chaudhary | Finance and Computer Science Projects</title>
-  <meta name="description" content="Finance projects by Daksh Chaudhary: a Titan Company free cash flow DCF and earnings valuation, trading comps against listed Indian jewellers, and an options pricer built from first principles.">
+  <meta name="description" content="Finance projects by Daksh Chaudhary: a tool that builds IBBI-format IBC valuation reports, a Titan Company free cash flow DCF and earnings valuation, trading comps against listed Indian jewellers, and an options pricer built from first principles.">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -18,6 +18,39 @@
   </header>
 
   <main class="wrap">
+    <section class="card" id="valuer" aria-labelledby="valuer-h">
+      <h2 id="valuer-h">Valuation Report Copilot: IBBI-Format IBC Reports</h2>
+      <p>A Python tool that turns one Excel workbook into a valuation report for securities and financial assets under the Insolvency and Bankruptcy Code, in the format prescribed by IBBI Circular IBBI/RV/103/2026. Code computes every figure; an optional Claude model drafts only the narrative.</p>
+
+      <div class="stats">
+        <div class="stat"><span class="num">22</span><span class="lbl">Report sections, a) to v) in the circular's order</span></div>
+        <div class="stat"><span class="num">52</span><span class="lbl">Unit tests against hand-worked figures</span></div>
+        <div class="stat"><span class="num">~$0.02</span><span class="lbl">AI drafting cost per report (live run)</span></div>
+        <div class="stat"><span class="num">5</span><span class="lbl">Narrative sections the AI can draft</span></div>
+      </div>
+
+      <ul>
+        <li>Valuation engine: FCFF DCF with CAPM and WACC, a WACC &times; terminal-growth sensitivity grid, trading comps (EV/EBITDA, EV/Revenue, P/E), receivables recovery by ageing bucket, weighting of approaches and a discount for lack of marketability, giving fair value and liquidation value per asset.</li>
+        <li>A checklist tests the input against the circular before the report is written: every executive-summary field, all three approaches discussed, weights adding to 100%, and "N/A" entries that need a reason.</li>
+        <li>AI drafting is off by default. The model gets only the computed facts, and a check rejects any figure in its text that the engine did not produce. Live tests showed it attaching correct figures to the wrong items, so every fact is now labelled with what it measures.</li>
+        <li>Scope: IBC securities and financial assets only. The registered valuer remains responsible for the report and signs it.</li>
+      </ul>
+
+      <div class="figs">
+        <figure>
+          <img src="images/ibc_exec_summary.png" alt="Executive summary table from the sample IBC valuation report, listing the valuer, corporate debtor, purpose, dates and the fair and liquidation values" loading="lazy">
+          <figcaption>Executive summary from the sample report</figcaption>
+        </figure>
+        <figure>
+          <img src="images/ibc_computations.png" alt="Computation annexure from the sample report: cost of capital, FCFF DCF and a WACC by terminal growth sensitivity table" loading="lazy">
+          <figcaption>Annexure: cost of capital, DCF and sensitivity</figcaption>
+        </figure>
+      </div>
+
+      <p><a class="btn" href="https://github.com/Dakshcore/valuer-copilot">View on GitHub</a></p>
+      <p class="note">The sample case is fictional: every name, number and date is made up.</p>
+    </section>
+
     <section class="card" id="titan" aria-labelledby="titan-h">
       <h2 id="titan-h">Titan Company: Equity Valuation and Risk Analysis</h2>
       <p>Two valuations of Titan Company (NSE: TITAN), each built in Excel and in Python on the same revenue forecast: a free cash flow (FCFF) DCF, and a discounted-earnings model with a Monte Carlo simulation, a tornado chart and a reverse valuation of the growth the price implies.</p>
